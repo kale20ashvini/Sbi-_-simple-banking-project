@@ -1,0 +1,100 @@
+package userInput;
+import java.util.*;
+public class Sbi 
+{
+	int acc_no,amt,amount;
+	String name;
+	float balance;
+	
+	public void create_acc(int acc_no,String name)
+	{
+		this.acc_no=acc_no;
+		this.name=name;
+		System.out.println("****Your account details****");
+		System.out.println("Account number: "+acc_no);
+		System.out.println("Account holder name: "+name);
+	}
+	public void deposite_money()
+	{
+		if(acc_no==0)
+		{
+			System.out.println("No accounts present");
+		}else
+		{
+		System.out.println("Enter amount to deposite: ");
+		Scanner sc=new Scanner(System.in);
+		int amt=sc.nextInt();
+		System.out.println("Money deposited: "+amt);
+		this.amt=amt;
+		}
+	}
+	public void withdraw()
+	{
+	
+		if(acc_no==0)
+		{
+			System.out.println("No accounts present");
+		}else if(balance==0)
+		{
+			System.out.println("Not enough money available to withdraw, Please check account Balance");
+		}
+		else{
+		System.out.println("Enter money to be withdraw:");
+		Scanner sc=new Scanner(System.in);
+		int amount=sc.nextInt();
+		System.out.println("Account number: "+acc_no);
+		System.out.println("Money Withdrawn: "+amount);
+		this.amount=amount;
+		}
+	}
+	public void Balance()
+	{
+		
+		System.out.println("****Your account details****");
+		System.out.println("Account number: "+acc_no);
+		System.out.println("Account Holder Name: " +name);
+		float balance=amt-amount;	
+		System.out.println("Account balance: "+balance);
+		this.balance=balance;
+	}
+	public static void main(String[] args) {
+		Rbi obj=new Rbi();
+		Scanner sc=new Scanner(System.in);
+		do
+		{
+			System.out.println("\n **Welcome to Banking System**");
+			System.out.println("\n1. Create new account \n2: Money Withdraw \n3: Money Deposite \n4: View Balance");
+			System.out.println("\nEnter your choice");
+			int ch=sc.nextInt();
+	
+		
+		switch(ch)
+		{
+		case 1: 
+				System.out.println("Enter the account number: ");
+				int acc_no=sc.nextInt();
+				System.out.println("Enter account holder name: ");
+				String s=sc.nextLine();
+				String name=sc.nextLine();
+				obj.create_acc(acc_no,name);
+				break;
+		
+		case 2: 
+				
+				obj.withdraw();
+				break;
+			
+		case 3: obj.deposite_money();
+				break;
+		
+		case 4: obj.Balance();
+				break;
+				
+		case 5: System.out.println("Wrong choice! Please try again");
+				break;	
+		}
+		}while(true);
+		
+	}
+
+}
